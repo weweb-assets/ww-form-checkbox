@@ -9,7 +9,6 @@
     </div>
 </template>
 
-
 <script>
 /* wwManager:start */
 import wwCheckboxPopupConfig from './popup/wwCheckboxPopupConfig.vue'
@@ -111,6 +110,7 @@ export default {
             }
             wwLib.wwObjectHover.removeLock();
         }
+        /* wwManager:end */
     },
     created() {
         this.wwObject.content.data = this.wwObject.content.data || {}
