@@ -9,6 +9,10 @@ const addComponent = function () {
         wwLib.wwObject.register({
             /* wwManager:start */
             cmsOptions: {
+                displayName: {
+                    en: 'From Checkbox',
+                    fr: 'Case à choser de Formulaire'
+                },
                 wwObjectMenu: {
                     items: [
                         {

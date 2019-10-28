@@ -1,7 +1,7 @@
 <template>
     <div class="elem-checkbox">
         <div class="checkbox">
-            <input type="checkbox" :name="wwObject.content.data.config.name" :required="wwObject.content.data.config.required" :style="style" />
+            <input type="checkbox" :name="wwObject.content.data.config.name" :required="wwObject.content.data.config.required" />
         </div>
         <div class="checkbox-text">
             <wwObject :ww-object="wwObject.content.data.wwObject"></wwObject>
@@ -112,10 +112,10 @@ export default {
         }
         /* wwManager:end */
     },
-    created() {
+    mounted() {
         this.wwObject.content.data = this.wwObject.content.data || {}
         this.wwObject.content.data.config = this.wwObject.content.data.config || {}
-        this.wwObject.content.data.wwObject = wwLib.wwObject.getDefault({ type: 'ww-text' })
+        this.wwObject.content.data.wwObject = this.wwObject.content.data.wwObject || wwLib.wwObject.getDefault({ type: 'ww-text' })
 
         this.wwObjectCtrl.update(this.wwObject)
         this.$emit('ww-loaded', this);
@@ -128,6 +128,7 @@ export default {
     display: flex;
     flex-wrap: nowrap;
     width: 100%;
+    padding: 5px 0;
     .checkbox {
         outline: none;
         margin-right: 10px;
