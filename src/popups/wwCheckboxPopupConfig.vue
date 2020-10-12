@@ -2,52 +2,49 @@
     <div class="ww-popup-config">
         <div class="content">
             <div class="elem">
-                <wwManagerInput class="input" color="orange" v-model="result.checkboxConfig.name" label="Name"></wwManagerInput>
+                <wwManagerInput class="input" color="orange" v-model="result.config.name" label="Name"></wwManagerInput>
             </div>
             <div class="elem">
-               <div class="title">Required</div>
-                <wwManagerRadio class="radio" v-model="result.checkboxConfig.required"></wwManagerRadio>
+                <div class="title">Required</div>
+                <wwManagerRadio class="radio" v-model="result.config.required"></wwManagerRadio>
             </div>
         </div>
     </div>
 </template>
 
-<script> 
+<script>
 export default {
-    name: "wwCheckboxPopupStyle",
+    name: 'wwCheckboxPopupConfig',
     props: {
         options: {
             type: Object,
             default() {
-                return {
-                }
-            }
+                return {};
+            },
         },
     },
     data() {
         return {
             wwLang: wwLib.wwLang,
-            wwObject: this.options.data.wwObject,
+            content: this.options.data,
             result: {
-                checkboxConfig: {
-                    name: undefined,
-                    required: false
-                }
-            }
+                config: {
+                    name: 'Name',
+                    required: false,
+                },
+            },
         };
     },
     methods: {
         init() {
-            this.result.checkboxConfig.required = this.wwObject.content.data.config.required || false
-            this.result.checkboxConfig.name = this.wwObject.content.data.config.name
-            this.options.result = this.result
+            this.result.config.required = this.content.config.required || false;
+            this.result.config.name = this.content.config.name;
+            this.options.result = this.result;
         },
     },
     created() {
-        this.init()
+        this.init();
     },
-    beforeDestroy() {
-    }
 };
 </script>
 
@@ -60,7 +57,7 @@ export default {
         overflow: auto;
         width: 100%;
         justify-content: center;
-        font-family: "Monserrat", sans-serif;
+        font-family: 'Monserrat', sans-serif;
         .elem {
             margin: 10px 33%;
             width: 33%;
@@ -70,13 +67,10 @@ export default {
             .select {
                 width: 33%;
             }
-            .radio {
-            }
         }
-        
         .title {
             color: #e02a4d;
-            font-family: "Monserrat", sans-serif;
+            font-family: 'Monserrat', sans-serif;
             font-size: 1.2rem;
             text-transform: uppercase;
             font-weight: bold;
