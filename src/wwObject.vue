@@ -1,6 +1,7 @@
 <template>
     <div class="ww-form-checkbox">
         <input
+            :id="content.globalSettings.name"
             v-if="content.globalSettings"
             class="ww-form-checkbox__elem"
             :class="{ editing: isEditing }"
@@ -8,7 +9,9 @@
             :name="content.globalSettings.name"
             :required="content.globalSettings.required"
         />
-        <wwObject v-bind="content.wwObject"></wwObject>
+        <label :for="content.globalSettings.name">
+            <wwObject v-bind="content.wwObject"></wwObject>
+        </label>
     </div>
 </template>
 
@@ -31,7 +34,7 @@ export default {
     computed: {
         isEditing() {
             /* wwEditor:start */
-            return this.wwEditorState.isSelected;
+            return this.wwEditorState.editMode === wwLib.wwSectionHelper.EDIT_MODES.CONTENT;
             /* wwEditor:end */
             // eslint-disable-next-line no-unreachable
             return false;
