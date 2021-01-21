@@ -8,7 +8,7 @@
             :name="content.globalSettings.name"
             :required="content.globalSettings.required"
         />
-        <wwObject class="ww-form-elem__checkbox-text" v-bind="content.wwObject"></wwObject>
+        <wwObject v-bind="content.wwObject"></wwObject>
     </div>
 </template>
 
@@ -31,7 +31,7 @@ export default {
     computed: {
         isEditing() {
             /* wwEditor:start */
-            return this.wwEditorState.editMode === wwLib.wwEditorHelper.EDIT_MODES.EDITION;
+            return this.wwEditorState.isSelected;
             /* wwEditor:end */
             // eslint-disable-next-line no-unreachable
             return false;
@@ -54,9 +54,6 @@ export default {
             pointer-events: none;
         }
         /* wwEditor:end */
-        &-text {
-            width: 100%;
-        }
     }
 }
 </style>
