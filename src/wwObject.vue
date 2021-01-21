@@ -1,21 +1,18 @@
 <template>
     <div class="ww-form-checkbox">
         <input
-            class="checkbox"
-            :class="{ 'ww-editing': isEditing }"
+            v-if="content.globalSettings"
+            class="ww-form-checkbox__elem"
+            :class="{ editing: isEditing }"
             type="checkbox"
-            :name="content.config.name"
-            :required="content.config.required"
+            :name="content.globalSettings.name"
+            :required="content.globalSettings.required"
         />
-        <wwObject class="checkbox-text" v-bind="content.wwObject"></wwObject>
+        <wwObject class="ww-form-elem__checkbox-text" v-bind="content.wwObject"></wwObject>
     </div>
 </template>
 
 <script>
-/* wwEditor:start */
-import openPopup from './popups';
-/* wwEditor:end */
-
 export default {
     name: '__COMPONENT_NAME__',
     props: {
@@ -25,25 +22,21 @@ export default {
         /* wwEditor:end */
     },
     wwDefaultContent: {
-        config: {
-            name: 'name',
+        globalSettings: {
+            name: '',
             required: false,
         },
         wwObject: { isWwObject: true, type: 'ww-text' },
     },
     computed: {
         isEditing() {
-            return this.wwEditorState.editMode === wwLib.wwSectionHelper.EDIT_MODES.CONTENT;
+            /* wwEditor:start */
+            return this.wwEditorState.editMode === wwLib.wwEditorHelper.EDIT_MODES.EDITION;
+            /* wwEditor:end */
+            // eslint-disable-next-line no-unreachable
+            return false;
         },
     },
-    /* wwEditor:start */
-    methods: {
-        async setOptions() {
-            const result = await openPopup(this.content);
-            if (result) this.$emit('update', result);
-        },
-    },
-    /* wwEditor:end */
 };
 </script>
 
@@ -52,18 +45,18 @@ export default {
     display: flex;
     flex-wrap: nowrap;
     width: 100%;
-    padding: 5px 0;
-    .checkbox {
+    padding: var(--ww-spacing-01) 0;
+    &__elem {
         outline: none;
-        margin-right: 10px;
+        margin-right: var(--ww-spacing-02);
         /* wwEditor:start */
-        &.ww-editing {
+        &.editing {
             pointer-events: none;
         }
         /* wwEditor:end */
-    }
-    .checkbox-text {
-        width: 100%;
+        &-text {
+            width: 100%;
+        }
     }
 }
 </style>
