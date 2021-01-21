@@ -1,37 +1,24 @@
 {
     "componentPath": "./src/wwObject.vue",
-    "content": {
-        "type": "ww-form-checkbox",
-        "data": {
-            "config": {
-                "name": "name",
-                "required": true
-            }
-        }
-    },
-    "upsales": {
-        "wwAnalytics": {
-            "click": true
-        }
-    },
-    "cmsOptions": {
-        "displayName": {
-            "en": "From Checkbox",
-            "fr": "Case à choser de Formulaire"
+    "editor": {
+        "label": {
+            "fr": "Case à choser de formulaire",
+            "en": "Form checkbox"
         },
-        "wwObjectMenu": {
-            "items": [
-                {
-                    "name": "OPTIONS",
-                    "text": {
-                        "en": "Options...",
-                        "fr": "Options..."
-                    },
-                    "main": true,
-                    "icon": "wwi wwi-edit-other",
-                    "action": "options"
+        "settingsOptions": {
+            "name": {
+                "path": "globalSettings.name",
+                "label": { "en": "Name", "fr": "fr" },
+                "type": "Text",
+                "options": {
+                    "placeholder": "Name"
                 }
-            ]
+            },
+            "required": {
+                "path": "globalSettings.required",
+                "label": { "en": "Required", "fr": "Requis" },
+                "type": "OnOff"
+            }
         }
     }
 }
