@@ -48,6 +48,8 @@ export default {
     flex-wrap: nowrap;
     width: 100%;
     padding: var(--ww-spacing-01) 0;
+    align-items: center;
+
     &__elem {
         outline: none;
         margin-right: var(--ww-spacing-02);
