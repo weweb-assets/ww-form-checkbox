@@ -9,15 +9,14 @@
             :name="content.globalSettings.name"
             :required="content.globalSettings.required"
         />
-        <label :for="content.globalSettings.name">
+        <component :is="isEditing ? 'div' : 'label'" :for="this.content.globalSettings.name">
             <wwObject v-bind="content.wwObject"></wwObject>
-        </label>
+        </component>
     </div>
 </template>
 
 <script>
 export default {
-    name: '__COMPONENT_NAME__',
     props: {
         content: Object,
         /* wwEditor:start */
