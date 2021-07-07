@@ -1,15 +1,15 @@
 <template>
     <div class="ww-form-checkbox">
         <input
-            :id="content.globalSettings.name"
             v-if="content.globalSettings"
+            :id="content.globalSettings.name"
             class="ww-form-checkbox__elem"
             :class="{ editing: isEditing }"
             type="checkbox"
             :name="content.globalSettings.name"
             :required="content.globalSettings.required"
         />
-        <component :is="isEditing ? 'div' : 'label'" :for="this.content.globalSettings.name">
+        <component :is="isEditing ? 'div' : 'label'" :for="content.globalSettings.name">
             <wwObject v-bind="content.wwObject"></wwObject>
         </component>
     </div>
@@ -18,9 +18,9 @@
 <script>
 export default {
     props: {
-        content: Object,
+        content: { type: Object, required: true },
         /* wwEditor:start */
-        wwEditorState: Object,
+        wwEditorState: { type: Object, required: true },
         /* wwEditor:end */
     },
     wwDefaultContent: {
