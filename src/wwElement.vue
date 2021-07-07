@@ -10,7 +10,7 @@
             :required="content.globalSettings.required"
         />
         <component :is="isEditing ? 'div' : 'label'" :for="content.globalSettings.name">
-            <wwElement v-bind="content.wwElement"></wwElement>
+            <wwElement v-bind="content.wwObject" />
         </component>
     </div>
 </template>
@@ -28,7 +28,7 @@ export default {
             name: '',
             required: false,
         },
-        wwElement: { iswwElement: true, type: 'ww-text' },
+        wwObject: { isWwObject: true, type: 'ww-text' },
     },
     computed: {
         isEditing() {
