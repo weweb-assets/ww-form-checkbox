@@ -1,15 +1,14 @@
 <template>
     <div class="ww-form-checkbox">
         <input
-            v-if="content.globalSettings"
-            :id="content.globalSettings.name"
+            :id="content.name"
             class="ww-form-checkbox__elem"
             :class="{ editing: isEditing }"
             type="checkbox"
-            :name="content.globalSettings.name"
-            :required="content.globalSettings.required"
+            :name="content.name"
+            :required="content.required"
         />
-        <component :is="isEditing ? 'div' : 'label'" :for="content.globalSettings.name">
+        <component :is="isEditing ? 'div' : 'label'" :for="content.name">
             <wwElement v-bind="content.wwObject" />
         </component>
     </div>
@@ -22,13 +21,6 @@ export default {
         /* wwEditor:start */
         wwEditorState: { type: Object, required: true },
         /* wwEditor:end */
-    },
-    wwDefaultContent: {
-        globalSettings: {
-            name: '',
-            required: false,
-        },
-        wwObject: { isWwObject: true, type: 'ww-text' },
     },
     computed: {
         isEditing() {
@@ -49,7 +41,6 @@ export default {
     width: 100%;
     padding: var(--ww-spacing-01) 0;
     align-items: center;
-
     &__elem {
         outline: none;
         margin-right: var(--ww-spacing-02);
