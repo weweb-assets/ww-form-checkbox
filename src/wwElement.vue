@@ -1,14 +1,14 @@
 <template>
     <div class="ww-form-checkbox">
         <input
-            :id="content.name"
+            :id="content.globalSettings.name"
             class="ww-form-checkbox__elem"
             :class="{ editing: isEditing }"
             type="checkbox"
-            :name="content.name"
-            :required="content.required"
+            :name="content.globalSettings.name"
+            :required="content.globalSettings.required"
         />
-        <component :is="isEditing ? 'div' : 'label'" :for="content.name">
+        <component :is="isEditing ? 'div' : 'label'" :for="content.globalSettings.name">
             <wwElement v-bind="content.wwObject" />
         </component>
     </div>

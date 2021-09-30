@@ -3,18 +3,23 @@ export default {
         label: { fr: 'Case à choser de formulaire', en: 'Form checkbox' },
     },
     properties: {
-        name: {
-            label: { en: 'Name', fr: 'fr' },
-            type: 'Text',
+        globalSettings: {
+            type: 'Object',
             section: 'settings',
-            options: { placeholder: 'Name' },
-            defaultValue: '',
-        },
-        required: {
-            label: { en: 'Required', fr: 'Requis' },
-            type: 'OnOff',
-            section: 'settings',
-            defaultValue: false,
+            options: {
+                item: {
+                    name: {
+                        label: { en: 'Name', fr: 'Name' },
+                        type: 'Text',
+                        options: { placeholder: 'Name' },
+                    },
+                    required: {
+                        label: { en: 'Required', fr: 'Requis' },
+                        type: 'OnOff',
+                    },
+                },
+            },
+            defaultValue: { name: '', required: true },
         },
         wwObject: {
             hidden: true,
