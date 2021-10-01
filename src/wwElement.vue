@@ -1,4 +1,4 @@
-<template>
+<template v-if="content.globalSettings">
     <div class="ww-form-checkbox">
         <input
             :id="content.globalSettings.name"
